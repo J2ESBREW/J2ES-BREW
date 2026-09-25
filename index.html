@@ -1,19 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>J2ES BREW POS</title>
 </head>
 
 <body>
 
-    <h1>🍵 J2ES BREW</h1>
-    <h2>Matcha POS System</h2>
+<h1>🍵 J2ES BREW</h1>
+<h2>POS System</h2>
 
-    <button>Matcha Latte - RM8</button>
+<h3>🍵 Matcha</h3>
 
-    <button>Strawberry Matcha - RM10</button>
+<button onclick="addItem('Bitter Culinary (No.5)', 12)">
+    Bitter Culinary (No.5) - RM12
+</button>
 
-    <button>Matcha Coconut - RM9</button>
+<button onclick="addItem('BBC Matcha (No.3)', 15)">
+    BBC Matcha (No.3) - RM15
+</button>
+
+<button onclick="addItem('Very Umami Matcha (Ryu)', 22)">
+    Very Umami Matcha (Ryu) - RM22
+</button>
+
+<button onclick="addItem('Pink with Green 05', 15)">
+    Pink with Green 05 - RM15
+</button>
+
+
+<h3>💜 Ube</h3>
+
+<button onclick="addItem('Ube Latte', 10)">
+    Ube Latte - RM10
+</button>
+
+<button onclick="addItem('Seasalt Coconut Ube', 13)">
+    Seasalt Coconut Ube - RM13
+</button>
+
+
+<h3>🍫 Chocolate</h3>
+
+<button onclick="addItem('61 - Chocolate', 13)">
+    61 - Chocolate - RM13
+</button>
+
+<button onclick="addItem('Bitter Cocoa Milk', 12)">
+    Bitter Cocoa Milk - RM12
+</button>
+
+
+<hr>
+
+<h2>🧾 Current Order</h2>
+
+<div id="order"></div>
+
+<h2>Total: RM<span id="total">0.00</span></h2>
+
+<button onclick="clearOrder()">Clear Order</button>
+
+
+<script>
+
+let total = 0;
+
+function addItem(name, price) {
+
+    const order = document.getElementById("order");
+
+    const item = document.createElement("p");
+
+    item.innerText = name + " - RM" + price.toFixed(2);
+
+    order.appendChild(item);
+
+    total = total + price;
+
+    document.getElementById("total").innerText = total.toFixed(2);
+}
+
+
+function clearOrder() {
+
+    document.getElementById("order").innerHTML = "";
+
+    total = 0;
+
+    document.getElementById("total").innerText = "0.00";
+}
+
+</script>
 
 </body>
 </html>
