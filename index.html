@@ -1,97 +1,2008 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>J2ES BREW POS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>J² ES BREW POS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f5f1;
+    color: #222;
+}
+
+/* HEADER */
+
+header {
+    background: white;
+    padding: 12px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+}
+
+.brand h1 {
+    margin: 0;
+    color: #9f1735;
+}
+
+.brand p {
+    margin: 4px 0 0;
+    color: #777;
+}
+
+.order-number {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* MAIN POS */
+
+.main {
+    display: grid;
+    grid-template-columns: 58% 42%;
+    min-height: calc(100vh - 100px);
+}
+
+.menu-side {
+    padding: 25px;
+}
+
+.order-side {
+    background: white;
+    padding: 25px;
+    border-left: 1px solid #ddd;
+}
+
+
+/* MENU */
+
+.category {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.product {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    padding: 22px;
+    cursor: pointer;
+    text-align: left;
+    min-height: 105px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.05);
+}
+
+.product:hover {
+    border-color: #9f1735;
+}
+
+.product:active {
+    transform: scale(.98);
+}
+
+.product-name {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.product-price {
+    display: block;
+    margin-top: 12px;
+    color: #9f1735;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* CART */
+
+#cart {
+    min-height: 180px;
+    max-height: 330px;
+    overflow-y: auto;
+}
+
+.empty {
+    text-align: center;
+    color: #999;
+    padding: 50px 10px;
+}
+
+.cart-item {
+    padding: 13px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-name {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.cart-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.controls button {
+    border: none;
+    border-radius: 7px;
+    padding: 7px 11px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.minus {
+    background: #eee;
+}
+
+.plus {
+    background: #e4eee0;
+}
+
+.delete {
+    background: #f5dddd;
+}
+
+
+/* TOTAL */
+
+.total {
+    border-top: 2px solid #9f1735;
+    margin-top: 15px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+/* PAYMENT */
+
+.payment-title {
+    margin-top: 22px;
+    font-weight: bold;
+}
+
+.payment-methods {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.payment-methods button {
+    padding: 14px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.payment-methods button.active {
+    background: #9f1735;
+    color: white;
+    border-color: #9f1735;
+}
+
+
+/* CASH */
+
+#cashSection {
+    margin-top: 12px;
+}
+
+#cash {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+.quick-cash {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 7px;
+}
+
+.quick-cash button {
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.change {
+    margin-top: 10px;
+    background: #f2f2f2;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 19px;
+}
+
+
+/* ACTIONS */
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.actions button {
+    padding: 15px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.clear {
+    background: #e9e9e9;
+}
+
+.complete {
+    background: #9f1735;
+    color: white;
+    font-size: 16px;
+}
+
+
+/* DASHBOARD */
+
+.dashboard {
+    grid-column: 1 / -1;
+    padding: 25px;
+    background: #eeeae2;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.stat {
+    background: white;
+    padding: 17px;
+    border-radius: 12px;
+}
+
+.stat small {
+    color: #777;
+}
+
+.stat strong {
+    display: block;
+    margin-top: 6px;
+    font-size: 22px;
+}
+
+
+/* HISTORY */
+
+.history-box {
+    margin-top: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.history-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.history-buttons button {
+    border: none;
+    border-radius: 8px;
+    padding: 11px 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.export {
+    background: #9f1735;
+    color: white;
+}
+
+.clear-history {
+    background: #eee;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+th, td {
+    padding: 11px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+th {
+    color: #666;
+}
+
+.cash-tag,
+.qr-tag {
+    padding: 5px 9px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.cash-tag {
+    background: #e6f0e1;
+}
+
+.qr-tag {
+    background: #e4e9f5;
+}
+
+
+/* MOBILE / TABLET */
+
+@media(max-width: 900px) {
+
+    .main {
+        grid-template-columns: 1fr;
+    }
+
+    .order-side {
+        border-left: none;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 550px) {
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-<h1>🍵 J2ES BREW</h1>
-<h2>POS System</h2>
 
-<h3>🍵 Matcha</h3>
+<!-- HEADER -->
 
-<button onclick="addItem('Bitter Culinary (No.5)', 12)">
-    Bitter Culinary (No.5) - RM12
+<header>
+
+<div class="brand">
+
+<img
+src="logo.jpeg"
+class="logo"
+alt="J2 ES BREW Logo">
+
+<div>
+
+<h1>J² ES BREW</h1>
+
+<p>Point of Sale System</p>
+
+</div>
+
+</div>
+
+
+<div class="order-number">
+
+Order #
+<span id="orderNumber">001</span>
+
+</div>
+
+</header>
+
+
+
+<div class="main">
+
+
+<!-- MENU SIDE -->
+
+<div class="menu-side">
+
+<h2>Menu</h2>
+
+
+<h3 class="category">🍵 Matcha</h3>
+
+<div class="menu-grid">
+
+
+<button
+class="product"
+onclick="addItem('Bitter Culinary (No.5)',12)">
+
+<span class="product-name">
+Bitter Culinary (No.5)
+</span>
+
+<span class="product-price">
+RM12
+</span>
+
 </button>
 
-<button onclick="addItem('BBC Matcha (No.3)', 15)">
-    BBC Matcha (No.3) - RM15
-</button>
-
-<button onclick="addItem('Very Umami Matcha (Ryu)', 22)">
-    Very Umami Matcha (Ryu) - RM22
-</button>
-
-<button onclick="addItem('Pink with Green 05', 15)">
-    Pink with Green 05 - RM15
-</button>
 
 
-<h3>💜 Ube</h3>
+<button
+class="product"
+onclick="addItem('Balance Bitterness Ceremonial Matcha (No.3)',15)">
 
-<button onclick="addItem('Ube Latte', 10)">
-    Ube Latte - RM10
-</button>
+<span class="product-name">
+Balance Bitterness Ceremonial Matcha (No.3)
+</span>
 
-<button onclick="addItem('Seasalt Coconut Ube', 13)">
-    Seasalt Coconut Ube - RM13
+<span class="product-price">
+RM15
+</span>
+
 </button>
 
 
-<h3>🍫 Chocolate</h3>
 
-<button onclick="addItem('61 - Chocolate', 13)">
-    61 - Chocolate - RM13
+<button
+class="product"
+onclick="addItem('Very Umami Matcha (Ryu)',22)">
+
+<span class="product-name">
+Very Umami Matcha (Ryu)
+</span>
+
+<span class="product-price">
+RM22
+</span>
+
 </button>
 
-<button onclick="addItem('Bitter Cocoa Milk', 12)">
-    Bitter Cocoa Milk - RM12
+
+
+<button
+class="product"
+onclick="addItem('Pink with Green 05',15)">
+
+<span class="product-name">
+Pink with Green 05
+</span>
+
+<span class="product-price">
+RM15
+</span>
+
 </button>
 
 
-<hr>
+</div>
+
+
+
+<h3 class="category">💜 Ube</h3>
+
+<div class="menu-grid">
+
+
+<button
+class="product"
+onclick="addItem('Ube Latte - No Sugar Added',10)">
+
+<span class="product-name">
+Ube Latte - No Sugar Added
+</span>
+
+<span class="product-price">
+RM10
+</span>
+
+</button>
+
+
+
+<button
+class="product"
+onclick="addItem('Seasalt Coconut Ube',13)">
+
+<span class="product-name">
+Seasalt Coconut Ube
+</span>
+
+<span class="product-price">
+RM13
+</span>
+
+</button>
+
+
+</div>
+
+
+
+<h3 class="category">🍫 Chocolate</h3>
+
+<div class="menu-grid">
+
+
+<button
+class="product"
+onclick="addItem('61 - Chocolate',13)">
+
+<span class="product-name">
+61 - Chocolate
+</span>
+
+<span class="product-price">
+RM13
+</span>
+
+</button>
+
+
+
+<button
+class="product"
+onclick="addItem('Bitter Cocoa Milk',12)">
+
+<span class="product-name">
+Bitter Cocoa Milk
+</span>
+
+<span class="product-price">
+RM12
+</span>
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<!-- ORDER SIDE -->
+
+<div class="order-side">
+
 
 <h2>🧾 Current Order</h2>
 
-<div id="order"></div>
 
-<h2>Total: RM<span id="total">0.00</span></h2>
+<div id="cart"></div>
 
-<button onclick="clearOrder()">Clear Order</button>
+
+<div class="total">
+
+<span>Total</span>
+
+<span>
+RM<span id="total">0.00</span>
+</span>
+
+</div>
+
+
+
+<div class="payment-title">
+Payment Method
+</div>
+
+
+<div class="payment-methods">
+
+
+<button
+id="cashBtn"
+class="active"
+onclick="selectPayment('Cash')">
+
+💵 Cash
+
+</button>
+
+
+<button
+id="qrBtn"
+onclick="selectPayment('QR')">
+
+📱 QR
+
+</button>
+
+
+</div>
+
+
+
+<div id="cashSection">
+
+
+<input
+id="cash"
+type="number"
+step="0.01"
+placeholder="Cash Received (RM)"
+oninput="calculateChange()">
+
+
+
+<div class="quick-cash">
+
+<button onclick="setCash(10)">
+RM10
+</button>
+
+<button onclick="setCash(20)">
+RM20
+</button>
+
+<button onclick="setCash(50)">
+RM50
+</button>
+
+<button onclick="setCash(100)">
+RM100
+</button>
+
+</div>
+
+
+
+<div class="change">
+
+<span>Change</span>
+
+<strong>
+RM<span id="change">0.00</span>
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+<div class="actions">
+
+
+<button
+class="clear"
+onclick="clearCurrentOrder()">
+
+Clear
+
+</button>
+
+
+<button
+class="complete"
+onclick="completeOrder()">
+
+✓ Complete Order
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<!-- SALES DASHBOARD -->
+
+<div class="dashboard">
+
+
+<h2>📊 Sales Summary</h2>
+
+
+<div class="stats">
+
+
+<div class="stat">
+
+<small>Total Sales</small>
+
+<strong>
+RM<span id="salesTotal">0.00</span>
+</strong>
+
+</div>
+
+
+
+<div class="stat">
+
+<small>Total Orders</small>
+
+<strong id="totalOrders">
+0
+</strong>
+
+</div>
+
+
+
+<div class="stat">
+
+<small>Cups Sold</small>
+
+<strong id="cupsSold">
+0
+</strong>
+
+</div>
+
+
+
+<div class="stat">
+
+<small>Cash Sales</small>
+
+<strong>
+RM<span id="cashSales">0.00</span>
+</strong>
+
+</div>
+
+
+
+<div class="stat">
+
+<small>QR Sales</small>
+
+<strong>
+RM<span id="qrSales">0.00</span>
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+<!-- HISTORY -->
+
+<div class="history-box">
+
+
+<div class="history-header">
+
+
+<h2>🕒 Sales History</h2>
+
+
+<div class="history-buttons">
+
+
+<button
+class="export"
+onclick="exportSales()">
+
+📥 Export Sales
+
+</button>
+
+
+<button
+class="clear-history"
+onclick="clearHistory()">
+
+Clear History
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>Order</th>
+<th>Date</th>
+<th>Time</th>
+<th>Items</th>
+<th>Cups</th>
+<th>Payment</th>
+<th>Total</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="history"></tbody>
+
+
+</table>
+
+
+</div>
+
+</div>
+
+</div>
+
 
 
 <script>
 
+
+/* =========================
+   POS DATA
+========================= */
+
+let cart = {};
+
 let total = 0;
+
+let paymentMethod = "Cash";
+
+
+let salesHistory =
+JSON.parse(
+localStorage.getItem("j2esSalesHistory")
+) || [];
+
+
+let orderNumber =
+parseInt(
+localStorage.getItem("j2esOrderNumber")
+) || 1;
+
+
+
+/* =========================
+   CART
+========================= */
+
 
 function addItem(name, price) {
 
-    const order = document.getElementById("order");
+    if (cart[name]) {
 
-    const item = document.createElement("p");
+        cart[name].quantity++;
 
-    item.innerText = name + " - RM" + price.toFixed(2);
+    } else {
 
-    order.appendChild(item);
+        cart[name] = {
 
-    total = total + price;
+            price: price,
+            quantity: 1
 
-    document.getElementById("total").innerText = total.toFixed(2);
+        };
+    }
+
+    updateCart();
 }
 
 
-function clearOrder() {
 
-    document.getElementById("order").innerHTML = "";
+function increaseItem(name) {
+
+    cart[name].quantity++;
+
+    updateCart();
+}
+
+
+
+function decreaseItem(name) {
+
+    cart[name].quantity--;
+
+    if (cart[name].quantity <= 0) {
+
+        delete cart[name];
+
+    }
+
+    updateCart();
+}
+
+
+
+function removeItem(name) {
+
+    delete cart[name];
+
+    updateCart();
+}
+
+
+
+function updateCart() {
+
+
+    const cartBox =
+    document.getElementById("cart");
+
+
+    cartBox.innerHTML = "";
+
 
     total = 0;
 
-    document.getElementById("total").innerText = "0.00";
+
+    const names =
+    Object.keys(cart);
+
+
+
+    if (names.length === 0) {
+
+
+        cartBox.innerHTML =
+        '<div class="empty">No items added yet</div>';
+
+
+    } else {
+
+
+        names.forEach(function(name) {
+
+
+            const item =
+            cart[name];
+
+
+            const subtotal =
+            item.price *
+            item.quantity;
+
+
+            total += subtotal;
+
+
+            const row =
+            document.createElement("div");
+
+
+            row.className =
+            "cart-item";
+
+
+            const safeName =
+            name.replace(/'/g, "\\'");
+
+
+            row.innerHTML = `
+
+            <div class="cart-name">
+
+            ${name}
+
+            </div>
+
+
+            <div class="cart-bottom">
+
+
+            <span>
+
+            RM${item.price.toFixed(2)}
+            ×
+            ${item.quantity}
+
+            =
+
+            <strong>
+
+            RM${subtotal.toFixed(2)}
+
+            </strong>
+
+            </span>
+
+
+
+            <div class="controls">
+
+
+            <button
+            class="minus"
+            onclick="decreaseItem('${safeName}')">
+
+            −
+
+            </button>
+
+
+            <button
+            class="plus"
+            onclick="increaseItem('${safeName}')">
+
+            +
+
+            </button>
+
+
+            <button
+            class="delete"
+            onclick="removeItem('${safeName}')">
+
+            🗑
+
+            </button>
+
+
+            </div>
+
+
+            </div>
+
+            `;
+
+
+            cartBox.appendChild(row);
+
+        });
+
+    }
+
+
+    document.getElementById("total")
+    .innerText =
+    total.toFixed(2);
+
+
+    calculateChange();
+
 }
 
+
+
+/* =========================
+   PAYMENT
+========================= */
+
+
+function selectPayment(method) {
+
+
+    paymentMethod =
+    method;
+
+
+    document
+    .getElementById("cashBtn")
+    .classList
+    .toggle(
+        "active",
+        method === "Cash"
+    );
+
+
+    document
+    .getElementById("qrBtn")
+    .classList
+    .toggle(
+        "active",
+        method === "QR"
+    );
+
+
+    document
+    .getElementById("cashSection")
+    .style.display =
+    method === "Cash"
+    ? "block"
+    : "none";
+
+}
+
+
+
+function setCash(amount) {
+
+
+    document
+    .getElementById("cash")
+    .value =
+    amount.toFixed(2);
+
+
+    calculateChange();
+
+}
+
+
+
+function calculateChange() {
+
+
+    const cash =
+    parseFloat(
+        document
+        .getElementById("cash")
+        .value
+    ) || 0;
+
+
+    const change =
+    Math.max(
+        0,
+        cash - total
+    );
+
+
+    document
+    .getElementById("change")
+    .innerText =
+    change.toFixed(2);
+
+}
+
+
+
+/* =========================
+   CLEAR ORDER
+========================= */
+
+
+function clearCurrentOrder() {
+
+
+    if (
+        Object.keys(cart).length === 0
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        !confirm(
+            "Clear current order?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    cart = {};
+
+
+    document
+    .getElementById("cash")
+    .value = "";
+
+
+    updateCart();
+
+}
+
+
+
+/* =========================
+   COMPLETE ORDER
+========================= */
+
+
+function completeOrder() {
+
+
+    if (
+        Object.keys(cart).length === 0
+    ) {
+
+
+        alert(
+            "Please add an item first."
+        );
+
+
+        return;
+
+    }
+
+
+
+    if (
+        paymentMethod === "Cash"
+    ) {
+
+
+        const cash =
+        parseFloat(
+            document
+            .getElementById("cash")
+            .value
+        ) || 0;
+
+
+        if (
+            cash < total
+        ) {
+
+
+            alert(
+                "Cash received is less than the total."
+            );
+
+
+            return;
+
+        }
+
+    }
+
+
+
+    let cups = 0;
+
+
+    let itemText = [];
+
+
+
+    Object
+    .keys(cart)
+    .forEach(function(name) {
+
+
+        cups +=
+        cart[name].quantity;
+
+
+        itemText.push(
+
+            name +
+            " ×" +
+            cart[name].quantity
+
+        );
+
+    });
+
+
+
+    const now =
+    new Date();
+
+
+
+    const sale = {
+
+
+        order:
+        orderNumber,
+
+
+        date:
+        now.toLocaleDateString(),
+
+
+        time:
+        now.toLocaleTimeString(
+            [],
+            {
+                hour: "2-digit",
+                minute: "2-digit"
+            }
+        ),
+
+
+        items:
+        itemText.join(", "),
+
+
+        cups:
+        cups,
+
+
+        payment:
+        paymentMethod,
+
+
+        total:
+        total
+
+    };
+
+
+
+    salesHistory.push(sale);
+
+
+
+    localStorage.setItem(
+
+        "j2esSalesHistory",
+
+        JSON.stringify(
+            salesHistory
+        )
+
+    );
+
+
+
+    orderNumber++;
+
+
+
+    localStorage.setItem(
+
+        "j2esOrderNumber",
+
+        orderNumber
+
+    );
+
+
+
+    cart = {};
+
+
+    document
+    .getElementById("cash")
+    .value = "";
+
+
+    selectPayment("Cash");
+
+
+    updateCart();
+
+    updateDashboard();
+
+    updateOrderNumber();
+
+
+    alert(
+        "Order completed successfully!"
+    );
+
+}
+
+
+
+/* =========================
+   ORDER NUMBER
+========================= */
+
+
+function updateOrderNumber() {
+
+
+    document
+    .getElementById("orderNumber")
+    .innerText =
+
+    String(orderNumber)
+    .padStart(3, "0");
+
+}
+
+
+
+/* =========================
+   SALES DASHBOARD
+========================= */
+
+
+function updateDashboard() {
+
+
+    const history =
+    document
+    .getElementById("history");
+
+
+    history.innerHTML = "";
+
+
+    let totalSales = 0;
+
+    let cashSales = 0;
+
+    let qrSales = 0;
+
+    let cups = 0;
+
+
+
+    salesHistory
+    .slice()
+    .reverse()
+    .forEach(function(sale) {
+
+
+        totalSales +=
+        sale.total;
+
+
+        cups +=
+        sale.cups;
+
+
+        if (
+            sale.payment === "Cash"
+        ) {
+
+            cashSales +=
+            sale.total;
+
+        }
+
+
+        if (
+            sale.payment === "QR"
+        ) {
+
+            qrSales +=
+            sale.total;
+
+        }
+
+
+
+        const row =
+        document
+        .createElement("tr");
+
+
+
+        row.innerHTML = `
+
+
+        <td>
+
+        #${String(sale.order).padStart(3,"0")}
+
+        </td>
+
+
+        <td>
+
+        ${sale.date}
+
+        </td>
+
+
+        <td>
+
+        ${sale.time}
+
+        </td>
+
+
+        <td>
+
+        ${sale.items}
+
+        </td>
+
+
+        <td>
+
+        ${sale.cups}
+
+        </td>
+
+
+        <td>
+
+        <span class="${
+            sale.payment === "Cash"
+            ? "cash-tag"
+            : "qr-tag"
+        }">
+
+        ${sale.payment}
+
+        </span>
+
+        </td>
+
+
+        <td>
+
+        <strong>
+
+        RM${sale.total.toFixed(2)}
+
+        </strong>
+
+        </td>
+
+
+        `;
+
+
+
+        history
+        .appendChild(row);
+
+    });
+
+
+
+    document
+    .getElementById("salesTotal")
+    .innerText =
+    totalSales.toFixed(2);
+
+
+
+    document
+    .getElementById("totalOrders")
+    .innerText =
+    salesHistory.length;
+
+
+
+    document
+    .getElementById("cupsSold")
+    .innerText =
+    cups;
+
+
+
+    document
+    .getElementById("cashSales")
+    .innerText =
+    cashSales.toFixed(2);
+
+
+
+    document
+    .getElementById("qrSales")
+    .innerText =
+    qrSales.toFixed(2);
+
+}
+
+
+
+/* =========================
+   EXPORT SALES CSV
+========================= */
+
+
+function exportSales() {
+
+
+    if (
+        salesHistory.length === 0
+    ) {
+
+
+        alert(
+            "No sales to export."
+        );
+
+
+        return;
+
+    }
+
+
+
+    let csv = [];
+
+
+
+    csv.push([
+
+        "Order",
+        "Date",
+        "Time",
+        "Items",
+        "Cups",
+        "Payment",
+        "Total (RM)"
+
+    ]);
+
+
+
+    let totalSales = 0;
+
+    let totalCups = 0;
+
+    let cashSales = 0;
+
+    let qrSales = 0;
+
+
+
+    salesHistory
+    .forEach(function(sale) {
+
+
+        csv.push([
+
+            "#" +
+            String(sale.order)
+            .padStart(3,"0"),
+
+            sale.date,
+
+            sale.time,
+
+            sale.items,
+
+            sale.cups,
+
+            sale.payment,
+
+            sale.total
+            .toFixed(2)
+
+        ]);
+
+
+
+        totalSales +=
+        sale.total;
+
+
+        totalCups +=
+        sale.cups;
+
+
+
+        if (
+            sale.payment === "Cash"
+        ) {
+
+            cashSales +=
+            sale.total;
+
+        }
+
+
+
+        if (
+            sale.payment === "QR"
+        ) {
+
+            qrSales +=
+            sale.total;
+
+        }
+
+    });
+
+
+
+    /* DAILY SUMMARY */
+
+
+    csv.push([]);
+
+
+    csv.push([
+        "DAILY SUMMARY"
+    ]);
+
+
+    csv.push([
+        "Total Orders",
+        salesHistory.length
+    ]);
+
+
+    csv.push([
+        "Total Cups",
+        totalCups
+    ]);
+
+
+    csv.push([
+        "Cash Sales (RM)",
+        cashSales.toFixed(2)
+    ]);
+
+
+    csv.push([
+        "QR Sales (RM)",
+        qrSales.toFixed(2)
+    ]);
+
+
+    csv.push([
+        "TOTAL SALES (RM)",
+        totalSales.toFixed(2)
+    ]);
+
+
+
+    const csvContent =
+
+    csv
+    .map(function(row) {
+
+
+        return row
+        .map(function(value) {
+
+
+            let text =
+            String(
+                value ?? ""
+            );
+
+
+            text =
+            text.replace(
+                /"/g,
+                '""'
+            );
+
+
+            return (
+                '"' +
+                text +
+                '"'
+            );
+
+        })
+        .join(",");
+
+    })
+    .join("\n");
+
+
+
+    const blob =
+    new Blob(
+
+        [
+            "\uFEFF" +
+            csvContent
+        ],
+
+        {
+            type:
+            "text/csv;charset=utf-8;"
+        }
+
+    );
+
+
+
+    const link =
+    document
+    .createElement("a");
+
+
+
+    const today =
+    new Date();
+
+
+
+    const date =
+
+    today.getFullYear()
+    + "-"
+    +
+
+    String(
+        today.getMonth() + 1
+    )
+    .padStart(2,"0")
+
+    + "-"
+    +
+
+    String(
+        today.getDate()
+    )
+    .padStart(2,"0");
+
+
+
+    const url =
+    URL.createObjectURL(blob);
+
+
+
+    link.href =
+    url;
+
+
+    link.download =
+
+    "J2ES-BREW-Sales-"
+    +
+    date
+    +
+    ".csv";
+
+
+
+    document
+    .body
+    .appendChild(link);
+
+
+    link.click();
+
+
+    document
+    .body
+    .removeChild(link);
+
+
+    URL
+    .revokeObjectURL(url);
+
+}
+
+
+
+/* =========================
+   CLEAR SALES HISTORY
+========================= */
+
+
+function clearHistory() {
+
+
+    if (
+        salesHistory.length === 0
+    ) {
+
+        return;
+
+    }
+
+
+
+    const confirmed =
+    confirm(
+
+        "Delete ALL sales history?\n\n" +
+
+        "Please export your sales first.\n" +
+
+        "This cannot be undone."
+
+    );
+
+
+
+    if (
+        !confirmed
+    ) {
+
+        return;
+
+    }
+
+
+
+    salesHistory = [];
+
+
+    localStorage
+    .removeItem(
+        "j2esSalesHistory"
+    );
+
+
+
+    orderNumber = 1;
+
+
+    localStorage
+    .setItem(
+
+        "j2esOrderNumber",
+
+        orderNumber
+
+    );
+
+
+
+    updateDashboard();
+
+    updateOrderNumber();
+
+}
+
+
+
+/* =========================
+   START POS
+========================= */
+
+
+updateCart();
+
+updateDashboard();
+
+updateOrderNumber();
+
+selectPayment("Cash");
+
+
 </script>
+
 
 </body>
 </html>
