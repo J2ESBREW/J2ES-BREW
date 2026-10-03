@@ -44,7 +44,7 @@ header {
 
 .brand h1 {
     margin: 0;
-    color: #9f1735;
+    color: #8b1028;
 }
 
 .brand p {
@@ -58,7 +58,7 @@ header {
 }
 
 
-/* MAIN POS */
+/* MAIN */
 
 .main {
     display: grid;
@@ -82,6 +82,7 @@ header {
 .category {
     margin-top: 25px;
     margin-bottom: 10px;
+    color: #8b1028;
 }
 
 .menu-grid {
@@ -102,7 +103,7 @@ header {
 }
 
 .product:hover {
-    border-color: #9f1735;
+    border-color: #8b1028;
 }
 
 .product:active {
@@ -118,7 +119,7 @@ header {
 .product-price {
     display: block;
     margin-top: 12px;
-    color: #9f1735;
+    color: #8b1028;
     font-size: 20px;
     font-weight: bold;
 }
@@ -127,7 +128,7 @@ header {
 /* CART */
 
 #cart {
-    min-height: 180px;
+    min-height: 170px;
     max-height: 330px;
     overflow-y: auto;
 }
@@ -135,7 +136,7 @@ header {
 .empty {
     text-align: center;
     color: #999;
-    padding: 50px 10px;
+    padding: 45px 10px;
 }
 
 .cart-item {
@@ -152,6 +153,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
 }
 
 .controls button {
@@ -175,11 +177,28 @@ header {
 }
 
 
-/* TOTAL */
+/* PRICE SUMMARY */
+
+.price-summary {
+    margin-top: 15px;
+    border-top: 1px solid #ddd;
+    padding-top: 12px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.discount-line {
+    color: #8b1028;
+    font-weight: bold;
+}
 
 .total {
-    border-top: 2px solid #9f1735;
-    margin-top: 15px;
+    border-top: 2px solid #8b1028;
+    margin-top: 12px;
     padding-top: 15px;
     display: flex;
     justify-content: space-between;
@@ -188,12 +207,61 @@ header {
 }
 
 
-/* PAYMENT */
+/* DISCOUNT */
 
+.discount-title,
 .payment-title {
     margin-top: 22px;
     font-weight: bold;
 }
+
+.discount-buttons {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.discount-buttons button {
+    padding: 13px 8px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.discount-buttons button.active {
+    background: #8b1028;
+    color: white;
+    border-color: #8b1028;
+}
+
+.discount-buttons button.locked {
+    opacity: .45;
+}
+
+.discount-note {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #777;
+}
+
+#customDiscountBox {
+    display: none;
+    margin-top: 10px;
+}
+
+#customDiscount {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+
+/* PAYMENT */
 
 .payment-methods {
     display: grid;
@@ -212,9 +280,9 @@ header {
 }
 
 .payment-methods button.active {
-    background: #9f1735;
+    background: #8b1028;
     color: white;
-    border-color: #9f1735;
+    border-color: #8b1028;
 }
 
 
@@ -234,7 +302,7 @@ header {
 
 .quick-cash {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: 6px;
     margin-top: 7px;
 }
@@ -279,7 +347,7 @@ header {
 }
 
 .complete {
-    background: #9f1735;
+    background: #8b1028;
     color: white;
     font-size: 16px;
 }
@@ -295,7 +363,7 @@ header {
 
 .stats {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5,1fr);
     gap: 10px;
 }
 
@@ -347,7 +415,7 @@ header {
 }
 
 .export {
-    background: #9f1735;
+    background: #8b1028;
     color: white;
 }
 
@@ -388,9 +456,9 @@ th {
 }
 
 
-/* MOBILE / TABLET */
+/* MOBILE */
 
-@media(max-width: 900px) {
+@media(max-width:900px) {
 
     .main {
         grid-template-columns: 1fr;
@@ -401,11 +469,11 @@ th {
     }
 
     .stats {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 }
 
-@media(max-width: 550px) {
+@media(max-width:550px) {
 
     .menu-grid {
         grid-template-columns: 1fr;
@@ -428,8 +496,6 @@ th {
 <body>
 
 
-<!-- HEADER -->
-
 <header>
 
 <div class="brand">
@@ -443,7 +509,7 @@ alt="J2 ES BREW Logo">
 
 <h1>J² ES BREW</h1>
 
-<p>Point of Sale System</p>
+<p>No.01 · Point of Sale System</p>
 
 </div>
 
@@ -464,28 +530,31 @@ Order #
 <div class="main">
 
 
-<!-- MENU SIDE -->
+<!-- MENU -->
 
 <div class="menu-side">
 
 <h2>Menu</h2>
 
 
-<h3 class="category">🍵 Matcha</h3>
+<h3 class="category">
+🍵 Matcha Latte
+</h3>
+
 
 <div class="menu-grid">
 
 
 <button
 class="product"
-onclick="addItem('Bitter Culinary (No.5)',12)">
+onclick="addItem('ALOY 05',11)">
 
 <span class="product-name">
-Bitter Culinary (No.5)
+ALOY 05
 </span>
 
 <span class="product-price">
-RM12
+RM11
 </span>
 
 </button>
@@ -494,106 +563,10 @@ RM12
 
 <button
 class="product"
-onclick="addItem('Balance Bitterness Ceremonial Matcha (No.3)',15)">
+onclick="addItem('NEOS MATCHA 03',13)">
 
 <span class="product-name">
-Balance Bitterness Ceremonial Matcha (No.3)
-</span>
-
-<span class="product-price">
-RM15
-</span>
-
-</button>
-
-
-
-<button
-class="product"
-onclick="addItem('Very Umami Matcha (Ryu)',22)">
-
-<span class="product-name">
-Very Umami Matcha (Ryu)
-</span>
-
-<span class="product-price">
-RM22
-</span>
-
-</button>
-
-
-
-<button
-class="product"
-onclick="addItem('Pink with Green 05',15)">
-
-<span class="product-name">
-Pink with Green 05
-</span>
-
-<span class="product-price">
-RM15
-</span>
-
-</button>
-
-
-</div>
-
-
-
-<h3 class="category">💜 Ube</h3>
-
-<div class="menu-grid">
-
-
-<button
-class="product"
-onclick="addItem('Ube Latte - No Sugar Added',10)">
-
-<span class="product-name">
-Ube Latte - No Sugar Added
-</span>
-
-<span class="product-price">
-RM10
-</span>
-
-</button>
-
-
-
-<button
-class="product"
-onclick="addItem('Seasalt Coconut Ube',13)">
-
-<span class="product-name">
-Seasalt Coconut Ube
-</span>
-
-<span class="product-price">
-RM13
-</span>
-
-</button>
-
-
-</div>
-
-
-
-<h3 class="category">🍫 Chocolate</h3>
-
-<div class="menu-grid">
-
-
-<button
-class="product"
-onclick="addItem('61 - Chocolate',13)">
-
-<span class="product-name">
-61 - Chocolate
+NEOS MATCHA 03
 </span>
 
 <span class="product-price">
@@ -606,14 +579,100 @@ RM13
 
 <button
 class="product"
-onclick="addItem('Bitter Cocoa Milk',12)">
+onclick="addItem('ROY MATCHA 01',21)">
 
 <span class="product-name">
-Bitter Cocoa Milk
+ROY MATCHA 01
 </span>
 
 <span class="product-price">
-RM12
+RM21
+</span>
+
+</button>
+
+
+
+<button
+class="product"
+onclick="addItem('STRAWBERRY MATCHA',14)">
+
+<span class="product-name">
+STRAWBERRY MATCHA
+</span>
+
+<span class="product-price">
+RM14
+</span>
+
+</button>
+
+
+</div>
+
+
+
+<h3 class="category">
+💜 Ube Latte
+</h3>
+
+
+<div class="menu-grid">
+
+
+<button
+class="product"
+onclick="addItem('UBE LATTE',11)">
+
+<span class="product-name">
+UBE LATTE
+</span>
+
+<span class="product-price">
+RM11
+</span>
+
+</button>
+
+
+
+<button
+class="product"
+onclick="addItem('UBE COCONUT',15)">
+
+<span class="product-name">
+UBE COCONUT
+</span>
+
+<span class="product-price">
+RM15
+</span>
+
+</button>
+
+
+</div>
+
+
+
+<h3 class="category">
+🍫 Chocolate Latte
+</h3>
+
+
+<div class="menu-grid">
+
+
+<button
+class="product"
+onclick="addItem('CHOCOLATE LATTE',11)">
+
+<span class="product-name">
+CHOCOLATE LATTE
+</span>
+
+<span class="product-price">
+RM11
 </span>
 
 </button>
@@ -625,20 +684,73 @@ RM12
 
 
 
-<!-- ORDER SIDE -->
+<!-- ORDER -->
 
 <div class="order-side">
 
 
-<h2>🧾 Current Order</h2>
+<h2>
+🧾 Current Order
+</h2>
 
 
 <div id="cart"></div>
 
 
+
+<div class="price-summary">
+
+
+<div class="summary-line">
+
+<span>
+Subtotal
+</span>
+
+<strong>
+RM<span id="subtotal">0.00</span>
+</strong>
+
+</div>
+
+
+
+<div class="summary-line">
+
+<span>
+Cups
+</span>
+
+<strong id="currentCups">
+0
+</strong>
+
+</div>
+
+
+
+<div class="summary-line discount-line">
+
+<span id="discountLabel">
+Discount
+</span>
+
+<span>
+− RM<span id="discountTotal">0.00</span>
+</span>
+
+</div>
+
+
+</div>
+
+
+
 <div class="total">
 
-<span>Total</span>
+<span>
+Total
+</span>
 
 <span>
 RM<span id="total">0.00</span>
@@ -648,8 +760,92 @@ RM<span id="total">0.00</span>
 
 
 
+<!-- DISCOUNT -->
+
+<div class="discount-title">
+
+🏷️ Discount
+
+</div>
+
+
+<div class="discount-buttons">
+
+
+<button
+id="discount0"
+class="active"
+onclick="selectDiscount(0)">
+
+No Discount
+
+</button>
+
+
+
+<button
+id="discount1"
+onclick="selectDiscount(1)">
+
+RM1 OFF / cup
+
+</button>
+
+
+
+<button
+id="discount2"
+onclick="selectDiscount(2)">
+
+RM2 OFF / cup
+<br>
+<small>5+ cups</small>
+
+</button>
+
+
+
+<button
+id="discountCustom"
+onclick="selectCustomDiscount()">
+
+✏️ Custom / cup
+
+</button>
+
+
+</div>
+
+
+
+<div id="customDiscountBox">
+
+<input
+id="customDiscount"
+type="number"
+min="0"
+step="0.10"
+placeholder="Discount per cup (RM)"
+oninput="updateCustomDiscount()">
+
+</div>
+
+
+<div class="discount-note">
+
+RM2 OFF / cup requires at least 5 cups.
+Custom discount is applied per cup.
+
+</div>
+
+
+
+<!-- PAYMENT -->
+
 <div class="payment-title">
+
 Payment Method
+
 </div>
 
 
@@ -693,21 +889,26 @@ oninput="calculateChange()">
 
 <div class="quick-cash">
 
+
 <button onclick="setCash(10)">
 RM10
 </button>
+
 
 <button onclick="setCash(20)">
 RM20
 </button>
 
+
 <button onclick="setCash(50)">
 RM50
 </button>
 
+
 <button onclick="setCash(100)">
 RM100
 </button>
+
 
 </div>
 
@@ -715,7 +916,9 @@ RM100
 
 <div class="change">
 
-<span>Change</span>
+<span>
+Change
+</span>
 
 <strong>
 RM<span id="change">0.00</span>
@@ -751,16 +954,19 @@ onclick="completeOrder()">
 
 </div>
 
+
 </div>
 
 
 
-<!-- SALES DASHBOARD -->
+<!-- DASHBOARD -->
 
 <div class="dashboard">
 
 
-<h2>📊 Sales Summary</h2>
+<h2>
+📊 Sales Summary
+</h2>
 
 
 <div class="stats">
@@ -768,7 +974,9 @@ onclick="completeOrder()">
 
 <div class="stat">
 
-<small>Total Sales</small>
+<small>
+Total Sales
+</small>
 
 <strong>
 RM<span id="salesTotal">0.00</span>
@@ -780,7 +988,9 @@ RM<span id="salesTotal">0.00</span>
 
 <div class="stat">
 
-<small>Total Orders</small>
+<small>
+Total Orders
+</small>
 
 <strong id="totalOrders">
 0
@@ -792,7 +1002,9 @@ RM<span id="salesTotal">0.00</span>
 
 <div class="stat">
 
-<small>Cups Sold</small>
+<small>
+Cups Sold
+</small>
 
 <strong id="cupsSold">
 0
@@ -804,7 +1016,9 @@ RM<span id="salesTotal">0.00</span>
 
 <div class="stat">
 
-<small>Cash Sales</small>
+<small>
+Cash Sales
+</small>
 
 <strong>
 RM<span id="cashSales">0.00</span>
@@ -816,7 +1030,9 @@ RM<span id="cashSales">0.00</span>
 
 <div class="stat">
 
-<small>QR Sales</small>
+<small>
+QR Sales
+</small>
 
 <strong>
 RM<span id="qrSales">0.00</span>
@@ -837,7 +1053,9 @@ RM<span id="qrSales">0.00</span>
 <div class="history-header">
 
 
-<h2>🕒 Sales History</h2>
+<h2>
+🕒 Sales History
+</h2>
 
 
 <div class="history-buttons">
@@ -863,6 +1081,7 @@ Clear History
 
 </div>
 
+
 </div>
 
 
@@ -875,11 +1094,21 @@ Clear History
 <tr>
 
 <th>Order</th>
+
 <th>Date</th>
+
 <th>Time</th>
+
 <th>Items</th>
+
 <th>Cups</th>
+
+<th>Discount / Cup</th>
+
+<th>Total Discount</th>
+
 <th>Payment</th>
+
 <th>Total</th>
 
 </tr>
@@ -895,6 +1124,7 @@ Clear History
 
 </div>
 
+
 </div>
 
 </div>
@@ -905,25 +1135,46 @@ Clear History
 
 
 /* =========================
-   POS DATA
+   DATA
 ========================= */
 
 let cart = {};
+
+let subtotal = 0;
 
 let total = 0;
 
 let paymentMethod = "Cash";
 
 
+/*
+discountMode:
+0 = no discount
+1 = RM1 per cup
+2 = RM2 per cup
+"custom" = custom per cup
+*/
+
+let discountMode = 0;
+
+let discountPerCup = 0;
+
+let totalDiscount = 0;
+
+
 let salesHistory =
 JSON.parse(
-localStorage.getItem("j2esSalesHistory")
+    localStorage.getItem(
+        "j2esSalesHistory"
+    )
 ) || [];
 
 
 let orderNumber =
 parseInt(
-localStorage.getItem("j2esOrderNumber")
+    localStorage.getItem(
+        "j2esOrderNumber"
+    )
 ) || 1;
 
 
@@ -944,12 +1195,15 @@ function addItem(name, price) {
         cart[name] = {
 
             price: price,
+
             quantity: 1
 
         };
+
     }
 
     updateCart();
+
 }
 
 
@@ -959,6 +1213,7 @@ function increaseItem(name) {
     cart[name].quantity++;
 
     updateCart();
+
 }
 
 
@@ -967,13 +1222,16 @@ function decreaseItem(name) {
 
     cart[name].quantity--;
 
+
     if (cart[name].quantity <= 0) {
 
         delete cart[name];
 
     }
 
+
     updateCart();
+
 }
 
 
@@ -983,21 +1241,248 @@ function removeItem(name) {
     delete cart[name];
 
     updateCart();
+
 }
 
+
+
+function getCupCount() {
+
+    let cups = 0;
+
+
+    Object.keys(cart)
+    .forEach(function(name) {
+
+        cups +=
+        cart[name].quantity;
+
+    });
+
+
+    return cups;
+
+}
+
+
+
+/* =========================
+   DISCOUNT
+========================= */
+
+
+function selectDiscount(amount) {
+
+
+    const cups =
+    getCupCount();
+
+
+    /*
+    RM2 discount requires 5+ cups
+    */
+
+    if (
+        amount === 2 &&
+        cups < 5
+    ) {
+
+        alert(
+            "RM2 OFF per cup is available only when the customer buys 5 cups or more."
+        );
+
+        return;
+
+    }
+
+
+    discountMode =
+    amount;
+
+
+    discountPerCup =
+    amount;
+
+
+    document
+    .getElementById(
+        "customDiscount"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "customDiscountBox"
+    )
+    .style.display =
+    "none";
+
+
+    updateDiscountButtons();
+
+    updateCart();
+
+}
+
+
+
+function selectCustomDiscount() {
+
+
+    discountMode =
+    "custom";
+
+
+    document
+    .getElementById(
+        "customDiscountBox"
+    )
+    .style.display =
+    "block";
+
+
+    document
+    .getElementById(
+        "customDiscount"
+    )
+    .focus();
+
+
+    updateCustomDiscount();
+
+}
+
+
+
+function updateCustomDiscount() {
+
+
+    if (
+        discountMode !==
+        "custom"
+    ) {
+
+        return;
+
+    }
+
+
+    let value =
+    parseFloat(
+        document
+        .getElementById(
+            "customDiscount"
+        )
+        .value
+    );
+
+
+    if (
+        isNaN(value) ||
+        value < 0
+    ) {
+
+        value = 0;
+
+    }
+
+
+    discountPerCup =
+    value;
+
+
+    updateDiscountButtons();
+
+    updateCart();
+
+}
+
+
+
+function updateDiscountButtons() {
+
+
+    document
+    .getElementById(
+        "discount0"
+    )
+    .classList
+    .toggle(
+        "active",
+        discountMode === 0
+    );
+
+
+    document
+    .getElementById(
+        "discount1"
+    )
+    .classList
+    .toggle(
+        "active",
+        discountMode === 1
+    );
+
+
+    document
+    .getElementById(
+        "discount2"
+    )
+    .classList
+    .toggle(
+        "active",
+        discountMode === 2
+    );
+
+
+    document
+    .getElementById(
+        "discountCustom"
+    )
+    .classList
+    .toggle(
+        "active",
+        discountMode ===
+        "custom"
+    );
+
+
+    const cups =
+    getCupCount();
+
+
+    document
+    .getElementById(
+        "discount2"
+    )
+    .classList
+    .toggle(
+        "locked",
+        cups < 5
+    );
+
+}
+
+
+
+/* =========================
+   UPDATE CART
+========================= */
 
 
 function updateCart() {
 
 
     const cartBox =
-    document.getElementById("cart");
+    document
+    .getElementById("cart");
 
 
     cartBox.innerHTML = "";
 
 
-    total = 0;
+    subtotal = 0;
 
 
     const names =
@@ -1005,33 +1490,39 @@ function updateCart() {
 
 
 
-    if (names.length === 0) {
+    if (
+        names.length === 0
+    ) {
 
 
         cartBox.innerHTML =
+
         '<div class="empty">No items added yet</div>';
 
 
     } else {
 
 
-        names.forEach(function(name) {
+        names.forEach(
+        function(name) {
 
 
             const item =
             cart[name];
 
 
-            const subtotal =
+            const itemSubtotal =
             item.price *
             item.quantity;
 
 
-            total += subtotal;
+            subtotal +=
+            itemSubtotal;
 
 
             const row =
-            document.createElement("div");
+            document
+            .createElement("div");
 
 
             row.className =
@@ -1039,7 +1530,10 @@ function updateCart() {
 
 
             const safeName =
-            name.replace(/'/g, "\\'");
+            name.replace(
+                /'/g,
+                "\\'"
+            );
 
 
             row.innerHTML = `
@@ -1064,12 +1558,11 @@ function updateCart() {
 
             <strong>
 
-            RM${subtotal.toFixed(2)}
+            RM${itemSubtotal.toFixed(2)}
 
             </strong>
 
             </span>
-
 
 
             <div class="controls">
@@ -1104,23 +1597,142 @@ function updateCart() {
 
             </div>
 
-
             </div>
 
             `;
 
 
-            cartBox.appendChild(row);
+            cartBox
+            .appendChild(row);
 
         });
 
     }
 
 
-    document.getElementById("total")
+
+    const cups =
+    getCupCount();
+
+
+
+    /*
+    If RM2 discount was selected
+    and cups drop below 5,
+    remove discount automatically.
+    */
+
+
+    if (
+        discountMode === 2 &&
+        cups < 5
+    ) {
+
+
+        discountMode = 0;
+
+        discountPerCup = 0;
+
+    }
+
+
+
+    /*
+    DISCOUNT FORMULA
+
+    discount per cup × number of cups
+    */
+
+
+    totalDiscount =
+    discountPerCup *
+    cups;
+
+
+
+    /*
+    Never allow total below RM0
+    */
+
+
+    total =
+    Math.max(
+        0,
+        subtotal -
+        totalDiscount
+    );
+
+
+
+    document
+    .getElementById(
+        "subtotal"
+    )
+    .innerText =
+    subtotal.toFixed(2);
+
+
+
+    document
+    .getElementById(
+        "currentCups"
+    )
+    .innerText =
+    cups;
+
+
+
+    document
+    .getElementById(
+        "discountTotal"
+    )
+    .innerText =
+    totalDiscount.toFixed(2);
+
+
+
+    document
+    .getElementById(
+        "total"
+    )
     .innerText =
     total.toFixed(2);
 
+
+
+    if (
+        discountPerCup > 0
+    ) {
+
+
+        document
+        .getElementById(
+            "discountLabel"
+        )
+        .innerText =
+
+        "Discount (RM" +
+        discountPerCup.toFixed(2) +
+        " × " +
+        cups +
+        " cups)";
+
+
+    } else {
+
+
+        document
+        .getElementById(
+            "discountLabel"
+        )
+        .innerText =
+        "Discount";
+
+    }
+
+
+
+    updateDiscountButtons();
 
     calculateChange();
 
@@ -1141,7 +1753,9 @@ function selectPayment(method) {
 
 
     document
-    .getElementById("cashBtn")
+    .getElementById(
+        "cashBtn"
+    )
     .classList
     .toggle(
         "active",
@@ -1150,7 +1764,9 @@ function selectPayment(method) {
 
 
     document
-    .getElementById("qrBtn")
+    .getElementById(
+        "qrBtn"
+    )
     .classList
     .toggle(
         "active",
@@ -1159,8 +1775,11 @@ function selectPayment(method) {
 
 
     document
-    .getElementById("cashSection")
+    .getElementById(
+        "cashSection"
+    )
     .style.display =
+
     method === "Cash"
     ? "block"
     : "none";
@@ -1173,7 +1792,9 @@ function setCash(amount) {
 
 
     document
-    .getElementById("cash")
+    .getElementById(
+        "cash"
+    )
     .value =
     amount.toFixed(2);
 
@@ -1190,7 +1811,9 @@ function calculateChange() {
     const cash =
     parseFloat(
         document
-        .getElementById("cash")
+        .getElementById(
+            "cash"
+        )
         .value
     ) || 0;
 
@@ -1203,7 +1826,9 @@ function calculateChange() {
 
 
     document
-    .getElementById("change")
+    .getElementById(
+        "change"
+    )
     .innerText =
     change.toFixed(2);
 
@@ -1220,7 +1845,8 @@ function clearCurrentOrder() {
 
 
     if (
-        Object.keys(cart).length === 0
+        Object.keys(cart)
+        .length === 0
     ) {
 
         return;
@@ -1241,13 +1867,48 @@ function clearCurrentOrder() {
 
     cart = {};
 
+    resetDiscount();
+
 
     document
-    .getElementById("cash")
+    .getElementById(
+        "cash"
+    )
     .value = "";
 
 
     updateCart();
+
+}
+
+
+
+function resetDiscount() {
+
+
+    discountMode = 0;
+
+    discountPerCup = 0;
+
+    totalDiscount = 0;
+
+
+    document
+    .getElementById(
+        "customDiscount"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "customDiscountBox"
+    )
+    .style.display =
+    "none";
+
+
+    updateDiscountButtons();
 
 }
 
@@ -1262,7 +1923,8 @@ function completeOrder() {
 
 
     if (
-        Object.keys(cart).length === 0
+        Object.keys(cart)
+        .length === 0
     ) {
 
 
@@ -1277,15 +1939,40 @@ function completeOrder() {
 
 
 
+    const cups =
+    getCupCount();
+
+
+
     if (
-        paymentMethod === "Cash"
+        discountMode === 2 &&
+        cups < 5
+    ) {
+
+
+        alert(
+            "RM2 OFF per cup requires at least 5 cups."
+        );
+
+
+        return;
+
+    }
+
+
+
+    if (
+        paymentMethod ===
+        "Cash"
     ) {
 
 
         const cash =
         parseFloat(
             document
-            .getElementById("cash")
+            .getElementById(
+                "cash"
+            )
             .value
         ) || 0;
 
@@ -1308,20 +1995,11 @@ function completeOrder() {
 
 
 
-    let cups = 0;
-
-
     let itemText = [];
 
 
-
-    Object
-    .keys(cart)
+    Object.keys(cart)
     .forEach(function(name) {
-
-
-        cups +=
-        cart[name].quantity;
 
 
         itemText.push(
@@ -1356,8 +2034,11 @@ function completeOrder() {
         now.toLocaleTimeString(
             [],
             {
-                hour: "2-digit",
-                minute: "2-digit"
+                hour:
+                "2-digit",
+
+                minute:
+                "2-digit"
             }
         ),
 
@@ -1368,6 +2049,18 @@ function completeOrder() {
 
         cups:
         cups,
+
+
+        subtotal:
+        subtotal,
+
+
+        discountPerCup:
+        discountPerCup,
+
+
+        totalDiscount:
+        totalDiscount,
 
 
         payment:
@@ -1381,11 +2074,13 @@ function completeOrder() {
 
 
 
-    salesHistory.push(sale);
+    salesHistory
+    .push(sale);
 
 
 
-    localStorage.setItem(
+    localStorage
+    .setItem(
 
         "j2esSalesHistory",
 
@@ -1401,7 +2096,8 @@ function completeOrder() {
 
 
 
-    localStorage.setItem(
+    localStorage
+    .setItem(
 
         "j2esOrderNumber",
 
@@ -1414,12 +2110,19 @@ function completeOrder() {
     cart = {};
 
 
+    resetDiscount();
+
+
     document
-    .getElementById("cash")
+    .getElementById(
+        "cash"
+    )
     .value = "";
 
 
-    selectPayment("Cash");
+    selectPayment(
+        "Cash"
+    );
 
 
     updateCart();
@@ -1427,6 +2130,7 @@ function completeOrder() {
     updateDashboard();
 
     updateOrderNumber();
+
 
 
     alert(
@@ -1446,18 +2150,23 @@ function updateOrderNumber() {
 
 
     document
-    .getElementById("orderNumber")
+    .getElementById(
+        "orderNumber"
+    )
     .innerText =
 
     String(orderNumber)
-    .padStart(3, "0");
+    .padStart(
+        3,
+        "0"
+    );
 
 }
 
 
 
 /* =========================
-   SALES DASHBOARD
+   DASHBOARD
 ========================= */
 
 
@@ -1466,7 +2175,9 @@ function updateDashboard() {
 
     const history =
     document
-    .getElementById("history");
+    .getElementById(
+        "history"
+    );
 
 
     history.innerHTML = "";
@@ -1485,33 +2196,74 @@ function updateDashboard() {
     salesHistory
     .slice()
     .reverse()
-    .forEach(function(sale) {
+    .forEach(
+    function(sale) {
+
+
+        const saleTotal =
+        Number(
+            sale.total
+        ) || 0;
+
+
+        const saleCups =
+        Number(
+            sale.cups
+        ) || 0;
+
+
+        const saleDiscountPerCup =
+        Number(
+            sale.discountPerCup
+        ) || 0;
+
+
+        /*
+        Compatibility with older orders
+        */
+
+
+        const saleTotalDiscount =
+        sale.totalDiscount !==
+        undefined
+
+        ? Number(
+            sale.totalDiscount
+        )
+
+        : Number(
+            sale.discount
+        ) || 0;
+
 
 
         totalSales +=
-        sale.total;
+        saleTotal;
 
 
         cups +=
-        sale.cups;
+        saleCups;
+
 
 
         if (
-            sale.payment === "Cash"
+            sale.payment ===
+            "Cash"
         ) {
 
             cashSales +=
-            sale.total;
+            saleTotal;
 
         }
 
 
         if (
-            sale.payment === "QR"
+            sale.payment ===
+            "QR"
         ) {
 
             qrSales +=
-            sale.total;
+            saleTotal;
 
         }
 
@@ -1520,7 +2272,6 @@ function updateDashboard() {
         const row =
         document
         .createElement("tr");
-
 
 
         row.innerHTML = `
@@ -1534,29 +2285,51 @@ function updateDashboard() {
 
 
         <td>
-
         ${sale.date}
-
         </td>
 
 
         <td>
-
         ${sale.time}
-
         </td>
 
 
         <td>
-
         ${sale.items}
+        </td>
+
+
+        <td>
+        ${saleCups}
+        </td>
+
+
+        <td>
+
+        ${
+            saleDiscountPerCup > 0
+
+            ? "RM" +
+            saleDiscountPerCup
+            .toFixed(2)
+
+            : "—"
+        }
 
         </td>
 
 
         <td>
 
-        ${sale.cups}
+        ${
+            saleTotalDiscount > 0
+
+            ? "- RM" +
+            saleTotalDiscount
+            .toFixed(2)
+
+            : "—"
+        }
 
         </td>
 
@@ -1580,15 +2353,13 @@ function updateDashboard() {
 
         <strong>
 
-        RM${sale.total.toFixed(2)}
+        RM${saleTotal.toFixed(2)}
 
         </strong>
 
         </td>
 
-
         `;
-
 
 
         history
@@ -1599,35 +2370,45 @@ function updateDashboard() {
 
 
     document
-    .getElementById("salesTotal")
+    .getElementById(
+        "salesTotal"
+    )
     .innerText =
     totalSales.toFixed(2);
 
 
 
     document
-    .getElementById("totalOrders")
+    .getElementById(
+        "totalOrders"
+    )
     .innerText =
     salesHistory.length;
 
 
 
     document
-    .getElementById("cupsSold")
+    .getElementById(
+        "cupsSold"
+    )
     .innerText =
     cups;
 
 
 
     document
-    .getElementById("cashSales")
+    .getElementById(
+        "cashSales"
+    )
     .innerText =
     cashSales.toFixed(2);
 
 
 
     document
-    .getElementById("qrSales")
+    .getElementById(
+        "qrSales"
+    )
     .innerText =
     qrSales.toFixed(2);
 
@@ -1636,7 +2417,7 @@ function updateDashboard() {
 
 
 /* =========================
-   EXPORT SALES CSV
+   EXPORT SALES
 ========================= */
 
 
@@ -1666,12 +2447,24 @@ function exportSales() {
     csv.push([
 
         "Order",
+
         "Date",
+
         "Time",
+
         "Items",
+
         "Cups",
+
+        "Subtotal (RM)",
+
+        "Discount Per Cup (RM)",
+
+        "Total Discount (RM)",
+
         "Payment",
-        "Total (RM)"
+
+        "Final Total (RM)"
 
     ]);
 
@@ -1681,6 +2474,8 @@ function exportSales() {
 
     let totalCups = 0;
 
+    let totalDiscounts = 0;
+
     let cashSales = 0;
 
     let qrSales = 0;
@@ -1688,14 +2483,64 @@ function exportSales() {
 
 
     salesHistory
-    .forEach(function(sale) {
+    .forEach(
+    function(sale) {
+
+
+        const saleTotal =
+        Number(
+            sale.total
+        ) || 0;
+
+
+        const saleCups =
+        Number(
+            sale.cups
+        ) || 0;
+
+
+        const saleDiscountPerCup =
+        Number(
+            sale.discountPerCup
+        ) || 0;
+
+
+        const saleTotalDiscount =
+        sale.totalDiscount !==
+        undefined
+
+        ? Number(
+            sale.totalDiscount
+        )
+
+        : Number(
+            sale.discount
+        ) || 0;
+
+
+        const saleSubtotal =
+        sale.subtotal !==
+        undefined
+
+        ? Number(
+            sale.subtotal
+        )
+
+        : saleTotal +
+        saleTotalDiscount;
+
 
 
         csv.push([
 
             "#" +
-            String(sale.order)
-            .padStart(3,"0"),
+            String(
+                sale.order
+            )
+            .padStart(
+                3,
+                "0"
+            ),
 
             sale.date,
 
@@ -1703,11 +2548,20 @@ function exportSales() {
 
             sale.items,
 
-            sale.cups,
+            saleCups,
+
+            saleSubtotal
+            .toFixed(2),
+
+            saleDiscountPerCup
+            .toFixed(2),
+
+            saleTotalDiscount
+            .toFixed(2),
 
             sale.payment,
 
-            sale.total
+            saleTotal
             .toFixed(2)
 
         ]);
@@ -1715,39 +2569,41 @@ function exportSales() {
 
 
         totalSales +=
-        sale.total;
+        saleTotal;
 
 
         totalCups +=
-        sale.cups;
+        saleCups;
+
+
+        totalDiscounts +=
+        saleTotalDiscount;
 
 
 
         if (
-            sale.payment === "Cash"
+            sale.payment ===
+            "Cash"
         ) {
 
             cashSales +=
-            sale.total;
+            saleTotal;
 
         }
 
 
-
         if (
-            sale.payment === "QR"
+            sale.payment ===
+            "QR"
         ) {
 
             qrSales +=
-            sale.total;
+            saleTotal;
 
         }
 
     });
 
-
-
-    /* DAILY SUMMARY */
 
 
     csv.push([]);
@@ -1767,6 +2623,12 @@ function exportSales() {
     csv.push([
         "Total Cups",
         totalCups
+    ]);
+
+
+    csv.push([
+        "Total Discounts (RM)",
+        totalDiscounts.toFixed(2)
     ]);
 
 
@@ -1857,27 +2719,33 @@ function exportSales() {
     const date =
 
     today.getFullYear()
-    + "-"
-    +
 
-    String(
+    + "-"
+
+    + String(
         today.getMonth() + 1
     )
-    .padStart(2,"0")
+    .padStart(
+        2,
+        "0"
+    )
 
     + "-"
-    +
 
-    String(
+    + String(
         today.getDate()
     )
-    .padStart(2,"0");
+    .padStart(
+        2,
+        "0"
+    );
 
 
 
     const url =
-    URL.createObjectURL(blob);
-
+    URL.createObjectURL(
+        blob
+    );
 
 
     link.href =
@@ -1887,16 +2755,18 @@ function exportSales() {
     link.download =
 
     "J2ES-BREW-Sales-"
-    +
-    date
-    +
-    ".csv";
+
+    + date
+
+    + ".csv";
 
 
 
     document
     .body
-    .appendChild(link);
+    .appendChild(
+        link
+    );
 
 
     link.click();
@@ -1904,18 +2774,22 @@ function exportSales() {
 
     document
     .body
-    .removeChild(link);
+    .removeChild(
+        link
+    );
 
 
     URL
-    .revokeObjectURL(url);
+    .revokeObjectURL(
+        url
+    );
 
 }
 
 
 
 /* =========================
-   CLEAR SALES HISTORY
+   CLEAR HISTORY
 ========================= */
 
 
@@ -1931,7 +2805,6 @@ function clearHistory() {
     }
 
 
-
     const confirmed =
     confirm(
 
@@ -1944,7 +2817,6 @@ function clearHistory() {
     );
 
 
-
     if (
         !confirmed
     ) {
@@ -1954,7 +2826,6 @@ function clearHistory() {
     }
 
 
-
     salesHistory = [];
 
 
@@ -1962,7 +2833,6 @@ function clearHistory() {
     .removeItem(
         "j2esSalesHistory"
     );
-
 
 
     orderNumber = 1;
@@ -1976,7 +2846,6 @@ function clearHistory() {
         orderNumber
 
     );
-
 
 
     updateDashboard();
@@ -1998,11 +2867,12 @@ updateDashboard();
 
 updateOrderNumber();
 
+updateDiscountButtons();
+
 selectPayment("Cash");
 
 
 </script>
-
 
 </body>
 </html>
